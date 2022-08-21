@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+{{>head}}
+</head>
+<body>
+<h1>Este es el inicio</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Telefono</th>
+	  <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each data}}
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{nombre}}</td>
+      <td>{{apellido}}</td>
+      <td>{{telefono}}</td>
+	  <td>
+	  <a href="/editar-contacto/{{id}}"><button type="button" class="btn btn-warning">Editar</button></a>
+	  <form action="/borrar-contacto" method="POST">
+	  <input type="hidden" value={{id}} name="id">
+	  <button type="submit" class="btn btn-danger">Borrar</button>
+	  </form>
+	  </td>
+    </tr>
+	{{/each}}
+  </tbody>
+</table>
+<a href="/agregar-contacto"><button type="button" class="btn btn-primary">Agregar contacto</button></a>
+
+</body>
+</html>
